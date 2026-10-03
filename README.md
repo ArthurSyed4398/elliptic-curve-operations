@@ -41,3 +41,10 @@ For cryptographic prototyping and teaching, you often need elliptic curve group 
 - `Curve` rejects singular curves (where `4a^3 + 27b^2 ≡ 0 mod p`) at construction time, since those do not form a group.
 - `scalar_multiply` accepts negative `k` by negating the point; `k=0` returns the identity.
 - The double-and-add ladder always performs both an add and a double per bit, which is a mild side-channel improvement over bit-branching, but this is still not a constant-time implementation. Do not use it for production keys.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
