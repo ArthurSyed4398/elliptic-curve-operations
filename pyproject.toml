@@ -1,6 +1,6 @@
 [project]
 name = "elliptic-curve-operations"
-version = "0.1.0"
+version = "0.1.1"
 description = "Point addition and scalar multiplication on a given Weierstrass curve over a prime field for cryptographic prototyping."
 requires-python = ">=3.10"
 dependencies = []
